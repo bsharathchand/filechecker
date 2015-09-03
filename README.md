@@ -4,7 +4,7 @@ FileChecker is a simple utility that can help you in making your life easier, by
 - If you have made copies for backups and wanted to compare them
 - If you wanted to see the changed files in multiple backups
  
-	FileChecker will only compare the file attributes but not contents.
+> FileChecker will only compare the file attributes but not contents.
 
 **Inputs:** Main Directory, Multiple Compare Directories, Depth, Check for comparing file sizes, Check for modified date attribute. Option to ignore files in the directory if the directory do not exist. 
 
