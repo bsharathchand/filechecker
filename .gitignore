@@ -1,3 +1,13 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -6,3 +16,9 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
+
+#Spring
+.settings
+.springBeans
+
+
