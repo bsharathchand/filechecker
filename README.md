@@ -1,8 +1,8 @@
 **FileChecker**
 
 FileChecker is a simple utility that can help you in making your life easier, by handling the donkey work in many ways. Couple of them are given under... 
-1. If you have made copies for backups and wanted to compare them
-2. If you wanted to see the changed files in multiple backups
+- If you have made copies for backups and wanted to compare them
+- If you wanted to see the changed files in multiple backups
  
 	FileChecker will only compare the file attributes but not contents.
 
