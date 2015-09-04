@@ -12,9 +12,7 @@ import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -25,7 +23,7 @@ public class DirectoryParserTest {
 
     private Logger logger = LogManager.getLogger (getClass ());
 
-    private DirectoryParser parser;
+    private DirectoryParserService parser;
     @Rule
     public ExpectedException exception = ExpectedException.none ();
 
@@ -41,7 +39,7 @@ public class DirectoryParserTest {
 
         exception.expect (ParserException.class);
         exception.expectMessage ("Directory path cannot be null or empty string");
-        parser.setInputPath (inputPath);
+        parser.setDirectoryPath (inputPath);
 
         fail ("Directory Path cannot be null, ParserException expected");
     }
@@ -53,7 +51,7 @@ public class DirectoryParserTest {
 
         exception.expect (ParserException.class);
         exception.expectMessage ("Directory path cannot be null or empty string");
-        parser.setInputPath (inputPath);
+        parser.setDirectoryPath (inputPath);
 
         fail ("Directory Path cannot be empty string, ParserException expected");
     }
@@ -63,7 +61,7 @@ public class DirectoryParserTest {
         logger.trace ("TestMethod: InputpathDoesNotExist");
         final String inputPath = "/invalidDirectory/childDirectory";
 
-        parser.setInputPath (PathPrefix + inputPath);
+        parser.setDirectoryPath (PathPrefix + inputPath);
         exception.expect (ParserException.class);
         exception.expectMessage ("Directory path does not exist");
         parser.parseDirectory ();
@@ -76,9 +74,9 @@ public class DirectoryParserTest {
         logger.trace ("TestMethod: InputPathIsADirectory");
         final String inputPath = "..";
 
-        parser.setInputPath (inputPath);
+        parser.setDirectoryPath (inputPath);
         parser.parseDirectory ();
-        Object directoryTree = parser.getDirectoryTree ();
+        Object directoryTree = parser.getParsedDirectoryTree ();
 
         assertNotNull ("Directory tree should not be null after parsing", directoryTree);
     }
@@ -88,7 +86,7 @@ public class DirectoryParserTest {
         logger.trace ("TestMethod : inputPathIsAFile");
         final String inputPath = "parser-test-file.txt";
 
-        parser.setInputPath (PathPrefix + inputPath);
+        parser.setDirectoryPath (PathPrefix + inputPath);
         exception.expect (ParserException.class);
         exception.expectMessage ("Input path is not a directory");
         exception.expectMessage (inputPath);

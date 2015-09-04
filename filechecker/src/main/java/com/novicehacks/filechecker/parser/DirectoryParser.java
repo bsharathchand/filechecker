@@ -7,8 +7,10 @@ import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 
-public class DirectoryParser {
+@Component
+public class DirectoryParser implements DirectoryParserService {
 
     private static final String Path_Null_Msg = "Directory path cannot be null or empty string";
     private static final String Path_NotExists_Msg = "Directory path does not exist";
@@ -26,7 +28,7 @@ public class DirectoryParser {
      * @throws ParserException
      *         if input is null or empty string.
      */
-    public void setInputPath(String path) throws ParserException {
+    public void setDirectoryPath(String path) throws ParserException {
         checkNullorEmptyString (path);
         this.directoryPathString = path;
     }
@@ -59,9 +61,9 @@ public class DirectoryParser {
         return dirPath;
     }
 
-    public Object getDirectoryTree() {
+    public DirectoryTreeType getParsedDirectoryTree() {
         // TODO Auto-generated method stub
-        return new Object ();
+        return new DirectoryTreeType ();
     }
 
 }
