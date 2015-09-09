@@ -1,6 +1,7 @@
 package com.novicehacks.filechecker.parser;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -12,6 +13,7 @@ import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -76,9 +78,11 @@ public class DirectoryParserTest {
 
         parser.setDirectoryPath (inputPath);
         parser.parseDirectory ();
-        Object directoryTree = parser.getParsedDirectoryTree ();
+        DirectoryTreeType directoryTree = parser.getParsedDirectoryTree ();
 
         assertNotNull ("Directory tree should not be null after parsing", directoryTree);
+        assertThat ("Return type of parsed directory must be DirectoryTreeType", directoryTree,
+                CoreMatchers.isA (DirectoryTreeType.class));
     }
 
     @Test
