@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class FileAttributeType implements Serializable {
 
+    private static final long serialVersionUID = -5472378347870416084L;
     private String filename;
     private String fileSize;
     private String modifiedDate;
@@ -37,8 +38,21 @@ public class FileAttributeType implements Serializable {
         return isSymbolicLink;
     }
 
-    public void setSymbolicLink(boolean isSymbolicLink) {
+    public void setIsSymbolicLink(boolean isSymbolicLink) {
         this.isSymbolicLink = isSymbolicLink;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        final int appConstant = IntegerConstants.PrimeForHashcodeCalculations.value ();
+        final int localConstant = 19;
+
+        result = appConstant * localConstant + filename == null ? 0 : filename.hashCode ();
+        result += appConstant * localConstant + fileSize == null ? 0 : fileSize.hashCode ();
+        result += appConstant * localConstant + modifiedDate == null ? 0 : modifiedDate.hashCode ();
+
+        return result;
     }
 
     @Override

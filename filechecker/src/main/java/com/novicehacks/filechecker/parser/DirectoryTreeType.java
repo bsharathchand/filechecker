@@ -1,7 +1,6 @@
 package com.novicehacks.filechecker.parser;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.Set;
 
 public class DirectoryTreeType implements Serializable {
@@ -33,6 +32,18 @@ public class DirectoryTreeType implements Serializable {
 
     public void setCurrentNode(FileAttributeType currentNode) {
         this.currentNode = currentNode;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 0;
+        final int appConstant = IntegerConstants.PrimeForHashcodeCalculations.value ();
+        final int localConstant = 7;
+        result += appConstant * localConstant + (currentNode == null ? 0 : currentNode.hashCode ());
+        result += appConstant * localConstant
+                + (subDirectoryTreeNodes == null ? 0 : subDirectoryTreeNodes.hashCode ());
+        result += appConstant * localConstant + (leafNodes == null ? 0 : leafNodes.hashCode ());
+        return result;
     }
 
     @Override
