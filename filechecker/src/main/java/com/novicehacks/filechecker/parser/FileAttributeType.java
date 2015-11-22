@@ -48,9 +48,9 @@ public class FileAttributeType implements Serializable {
         final int appConstant = IntegerConstants.PrimeForHashcodeCalculations.value ();
         final int localConstant = 19;
 
-        result = appConstant * localConstant + filename == null ? 0 : filename.hashCode ();
-        result += appConstant * localConstant + fileSize == null ? 0 : fileSize.hashCode ();
-        result += appConstant * localConstant + modifiedDate == null ? 0 : modifiedDate.hashCode ();
+        result = appConstant * localConstant + (filename == null ? 0 : filename.hashCode ());
+        result += appConstant * localConstant + (fileSize == null ? 0 : fileSize.hashCode ());
+        result += appConstant * localConstant + (modifiedDate == null ? 0 : modifiedDate.hashCode ());
 
         return result;
     }

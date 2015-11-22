@@ -20,7 +20,7 @@ public class DirectoryTreeNameComparator implements DirectoryTreeTypeComparator 
     }
 
     /**
-     * gets the filename from the directorytree object.
+     * gets the filename from the directory tree object.
      * 
      * Returns empty string if either object is null or if currentNode on the
      * object is null or the filename is null on the current node
